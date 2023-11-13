@@ -32,6 +32,7 @@ public class PanMovement : MonoBehaviour
         }
 
         // smooth rotation
+        // https://forum.unity.com/threads/rotating-camera-via-tablet-or-android-devices-rotation.283293/
         Quaternion targetRotation = Quaternion.Euler(currentAngle);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * matchSpeed);
     }
