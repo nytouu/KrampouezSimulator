@@ -4,34 +4,35 @@ using UnityEngine;
 
 public class PanMovement : MonoBehaviour
 {
+    public float matchSpeed = 10f;
+    public float flipThreshold = 2.0f;
+
     private Vector3 currentAngle;
+    private Vector3 defaultPosition;
     private Vector3 rotation;
 
     // Start is called before the first frame update
     void Start()
     {
-        // init gyro
-        Input.gyro.enabled = true;
-
         currentAngle = Vector3.zero;
+        defaultPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /* currentAngle.x = -Input.gyro.attitude.eulerAngles.x; */
-        /* currentAngle.y = -Input.gyro.attitude.eulerAngles.z; */
-        /* currentAngle.z = Input.gyro.attitude.eulerAngles.y; */
+        currentAngle.x = Input.acceleration.x * 36;
+        currentAngle.y = Input.acceleration.y * 36;
+        currentAngle.z = Input.acceleration.z * 36;
 
-        /* Debug.Log(currentAngle); */
+        // move pan up
+        if (Mathf.Abs(currentAngle.z) >= flipThreshold) {
+            Vector3 targetPosition = transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z * currentAngle.z * 1000f);
+            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * matchSpeed * 3.0f);
+        }
 
-        /* rotation.x = Input.gyro.rotationRateUnbiased.x; */
-        /* rotation.y = -Input.gyro.rotationRateUnbiased.z; */
-        /* rotation.z = Input.gyro.rotationRateUnbiased.y; */
-
-        /* transform.rotation = new Quaternion(currentAngle.x, currentAngle.x, currentAngle.z, currentAngle.y); */
-        /* transform.rotation = Quaternion.Euler(-currentAngle); */
-        transform.rotation = Input.gyro.attitude;
-        /* transform.Rotate(rotation); */
+        // smooth rotation
+        Quaternion targetRotation = Quaternion.Euler(currentAngle);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * matchSpeed);
     }
 }
