@@ -758,7 +758,7 @@ Transform:
   m_GameObject: {fileID: 1295470071}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.00000011951883, y: 0.5585459, z: -0.00000023841858}
+  m_LocalPosition: {x: 0.00000011951883, y: 3.71, z: -0.00000023841858}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -777,11 +777,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1651478673568879094, guid: fb7084ab2763550278a780ff2fc930dd,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 25d94a368151a7957b5d038634dab413, type: 2}
     - target: {fileID: 3663722665201528160, guid: fb7084ab2763550278a780ff2fc930dd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -993,7 +988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d799df8199d0cdf0b8c19f8d1bd77198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshhold: 3
+  threshhold: 2.5
   krampouez: {fileID: 1320017253}
 --- !u!23 &1662018469
 MeshRenderer:
