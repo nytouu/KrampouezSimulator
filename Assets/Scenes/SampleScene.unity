@@ -777,6 +777,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2539970000006911600, guid: fb7084ab2763550278a780ff2fc930dd,
+        type: 3}
+      propertyPath: m_Mass
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3663722665201528160, guid: fb7084ab2763550278a780ff2fc930dd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -988,7 +993,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d799df8199d0cdf0b8c19f8d1bd77198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshhold: 2.5
+  forceThreshold: 2.5
+  distanceThreshold: 2.5
   krampouez: {fileID: 1320017253}
 --- !u!23 &1662018469
 MeshRenderer:
