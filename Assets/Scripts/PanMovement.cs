@@ -32,10 +32,10 @@ public class PanMovement : MonoBehaviour
         rb.MoveRotation(Quaternion.Euler(rotation));
 
         if (Input.gyro.userAcceleration.z > threshhold) {
-            if (colliding) {
+            krampouez.JumpFlip();
+            /* if (colliding) { */
                 /* Debug.Log("crêpe turn"); */
-                krampouez.JumpFlip();
-            }
+            /* } */
         }
     }
 

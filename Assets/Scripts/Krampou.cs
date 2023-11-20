@@ -24,6 +24,7 @@ public class Krampou : MonoBehaviour
 		Debug.Log("JumpFlip");
 
 		rb.AddForce(new Vector3(0f, force, 0f));
+		rb.angularVelocity.Set(force * 1000f, 0f, 0f);
 		
 	}
 }
