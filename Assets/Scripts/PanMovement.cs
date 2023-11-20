@@ -4,36 +4,41 @@ using UnityEngine;
 
 public class PanMovement : MonoBehaviour
 {
-    public float matchSpeed = 10f;
-    public float flipThreshold = 2.0f;
+    public ParticleSystem particles;
+    public float threshhold = 3f;
 
-    private Vector3 currentAngle;
-    private Vector3 defaultPosition;
-    private Vector3 rotation;
+    private Vector3 bias;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentAngle = Vector3.zero;
-        defaultPosition = transform.position;
+        Input.compensateSensors = true;
+        Input.gyro.enabled = true;
+
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
 
     // Update is called once per frame
     void Update()
-    {
-        currentAngle.x = Input.acceleration.x * 36;
-        currentAngle.y = Input.acceleration.y * 36;
-        currentAngle.z = Input.acceleration.z * 36;
+    { 
+        Vector3 rotation = Input.gyro.attitude.eulerAngles;
 
-        // move pan up
-        if (Mathf.Abs(currentAngle.z) >= flipThreshold) {
-            Vector3 targetPosition = transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z * currentAngle.z * 1000f);
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * matchSpeed * 3.0f);
+        // idk why i need to swap y and z but sure
+        rotation = SwapYZ(rotation);
+
+        gameObject.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
+
+        if (Input.gyro.userAcceleration.z > threshhold) {
+            Debug.Log("crêpe turn");
         }
+    }
 
-        // smooth rotation
-        // https://forum.unity.com/threads/rotating-camera-via-tablet-or-android-devices-rotation.283293/
-        Quaternion targetRotation = Quaternion.Euler(currentAngle);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * matchSpeed);
+    private Vector3 SwapYZ(Vector3 vector) {
+        float tempZ = vector.z;
+
+        vector.z = vector.y;
+        vector.y = tempZ;
+        
+        return vector;
     }
 }
