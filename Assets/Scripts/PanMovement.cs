@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class PanMovement : MonoBehaviour
 {
-    public ParticleSystem particles;
     public float threshhold = 3f;
+    public Krampou krampouez;
 
-    private Vector3 bias;
+    private Rigidbody rb;
+    private bool colliding;
 
     // Start is called before the first frame update
     void Start()
     {
+        colliding = false;
+        rb = GetComponent<Rigidbody>();
         Input.compensateSensors = true;
         Input.gyro.enabled = true;
 
@@ -19,17 +22,20 @@ public class PanMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     { 
         Vector3 rotation = Input.gyro.attitude.eulerAngles;
 
         // idk why i need to swap y and z but sure
         rotation = SwapYZ(rotation);
 
-        gameObject.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
+        rb.MoveRotation(Quaternion.Euler(rotation));
 
         if (Input.gyro.userAcceleration.z > threshhold) {
-            Debug.Log("crêpe turn");
+            if (colliding) {
+                /* Debug.Log("crêpe turn"); */
+                krampouez.JumpFlip();
+            }
         }
     }
 
@@ -40,5 +46,18 @@ public class PanMovement : MonoBehaviour
         vector.y = tempZ;
         
         return vector;
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        if (krampouez == collision.gameObject.GetComponent<Krampou>()) {
+            colliding = true;
+            Debug.Log("colliding");
+        }
+    }
+    private void OnCollisionExit(Collision collision) {
+        if (krampouez == collision.gameObject.GetComponent<Krampou>()) {
+            colliding = false;
+            Debug.Log("not colliding");
+        }
     }
 }
