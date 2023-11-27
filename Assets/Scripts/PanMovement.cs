@@ -25,12 +25,10 @@ public class PanMovement : MonoBehaviour
     { 
         Vector3 rotation = Input.gyro.attitude.eulerAngles;
 
-        // idk why i need to swap y and z but sure
+        // magic stuff
         rotation = SwapYZ(rotation);
 
-        rb.MoveRotation(Quaternion.Euler(rotation));
-
-        /* Debug.Log(Vector3.Distance(transform.position, krampouez.transform.position)); */
+        rb.MoveRotation(Quaternion.Euler(-rotation));
 
         if (Input.gyro.userAcceleration.z >= forceThreshold &&
                 Vector3.Distance(transform.position, krampouez.transform.position) <= distanceThreshold) {
