@@ -4,25 +4,27 @@ using UnityEngine;
 
 public class ShelfSelection : MonoBehaviour, ITouchable
 {
+    /* private GameObject selectedObject; */
+
     public void OnTouchedDown(Vector3 touchPosition)
     {
-        throw new System.NotImplementedException();
+        Debug.Log(touchPosition);
     }
 
     public void OnTouchedStay(Vector3 touchPosition)
     {
-        throw new System.NotImplementedException();
+        transform.position = touchPosition;
     }
 
     public void OnTouchedUp()
     {
-        throw new System.NotImplementedException();
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
