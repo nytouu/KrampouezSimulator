@@ -41,7 +41,7 @@ public class MixStick : MonoBehaviour
 		}
 
 		counter += Time.deltaTime * shakePower * speed;
- 
+
 		float x = Mathf.Cos(counter) * diameter + defaultPosition.x;
 		float y = transform.position.y;
 		float z = Mathf.Sin(counter) * diameter + defaultPosition.z;
