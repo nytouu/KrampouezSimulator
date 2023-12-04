@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClickableItem : MonoBehaviour, ITouchable
+public class ShelfItem : MonoBehaviour, ITouchable
 {
     private bool selected;
     private Vector3 defaultPosition;
