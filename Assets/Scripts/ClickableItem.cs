@@ -5,12 +5,10 @@ using UnityEngine;
 public class ClickableItem : MonoBehaviour, ITouchable
 {
     private bool selected;
-
     private Vector3 defaultPosition;
-
     private MeshRenderer currentMesh;
 
-    private Vector3 selectedPosition;
+	public SelectBox box;
 
     public void OnTouchedDown(Vector3 touchPosition)
     {
@@ -46,11 +44,19 @@ public class ClickableItem : MonoBehaviour, ITouchable
     // Update is called once per frame
     void Update()
     {
+
     }
 
-    void OnCollisionEnter(Collision collision) {
-        selected = true;
-        transform.position = selectedPosition;
-        Debug.Log("touch");
-    }
+	public void SelectAndMove(Vector3 position) {
+		selected = true;
+		transform.position = position;
+	}
+
+	private void OnTriggerEnter(Collider collision){
+		box = collision.gameObject.GetComponent<SelectBox>();
+
+		if (box) {
+			SelectAndMove(box.transform.position);
+		}
+	}
 }
