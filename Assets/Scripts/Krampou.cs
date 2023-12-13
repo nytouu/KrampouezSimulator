@@ -40,8 +40,7 @@ public class Krampou : MonoBehaviour
 
 	public void Cook(){
 		if (!failed) {
-			float lerp = Mathf.PingPong(Time.time, duration) / duration;
-			mesh.material.color = Color.Lerp(colorStart, colorEnd, lerp);
+			mesh.material.color = Color.Lerp(colorStart, colorEnd, Time.time / duration);
 
 			if (mesh.material.color == colorEnd) {
 				failed = true;
