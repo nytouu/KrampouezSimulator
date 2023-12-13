@@ -8,7 +8,7 @@ public class ShelfItem : MonoBehaviour, ITouchable
     private Vector3 defaultPosition;
     private MeshRenderer currentMesh;
 
-	private SelectBox box;
+	public SelectBox box;
 
     public void OnTouchedDown(Vector3 touchPosition)
     {
@@ -47,16 +47,17 @@ public class ShelfItem : MonoBehaviour, ITouchable
 
     }
 
-	public void SelectAndMove(Vector3 position) {
+	public void SelectAndMove(SelectBox box) {
 		selected = true;
-		transform.position = position;
+		transform.position = box.transform.position;
+		box.AddIngredientToList(gameObject);
 	}
 
 	private void OnTriggerEnter(Collider collision){
 		box = collision.gameObject.GetComponent<SelectBox>();
 
 		if (box) {
-			SelectAndMove(box.transform.position);
+			SelectAndMove(box);
 		}
 	}
 }
