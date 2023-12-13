@@ -11,8 +11,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/KrampouIngredienSelection.unity
     guid: 67e4007e0cc69cd15ab22141ef346e1b
+  - enabled: 1
+    path: Assets/Scenes/KrampouClientGetOrder.unity
+    guid: e0c5feca9a496b25d9122cf276b2350a
+  - enabled: 1
+    path: Assets/Scenes/KrampouMixIngredients.unity
+    guid: af76c55a20a637f6991d81d797204a3c
   m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000,
+      guid: df77d25368ad7d1869c1a15be63da77d, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 843b2c38ec509928091bb355b72f064b,
       type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000,
+      guid: 6ccc28bd0767b40cabe61f36d3edf681, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: 73b61059ba279f630a7b0fa6903e3b6d, type: 2}
