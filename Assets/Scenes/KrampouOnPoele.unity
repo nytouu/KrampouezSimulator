@@ -571,6 +571,11 @@ PrefabInstance:
       propertyPath: pan
       value: 
       objectReference: {fileID: 2078960535}
+    - target: {fileID: 4517090857691490058, guid: fb7084ab2763550278a780ff2fc930dd,
+        type: 3}
+      propertyPath: force
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
