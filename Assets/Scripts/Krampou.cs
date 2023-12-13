@@ -6,6 +6,7 @@ public enum State {
 	TooCooked,
 	Cramed
 }
+
 public class Krampou : MonoBehaviour
 {
 	public float force = 300f;
@@ -47,24 +48,23 @@ public class Krampou : MonoBehaviour
 	public void Cook(){
 		switch (state) {
 			case State.Uncooked:
-				ChangeColor(colorStart, colorCooked, State.Cooked);
+				UpdateProgress(colorStart, colorCooked);
 				break;
 			case State.Cooked:
-				ChangeColor(colorCooked, colorTooCooked, State.TooCooked);
+				UpdateProgress(colorCooked, colorTooCooked);
 				break;
 			case State.TooCooked:
-				ChangeColor(colorTooCooked, colorCramed, State.Cramed);
+				UpdateProgress(colorTooCooked, colorCramed);
 				break;
 			case State.Cramed:
 				break;
 		}
 	}
 
-	private void ChangeColor(Color start, Color target, State next) {
-		mesh.material.color = Color.Lerp(colorStart, target, Time.time / duration);
+	private void UpdateProgress(Color start, Color target) {
+		mesh.material.color = Color.Lerp(start, target, Time.time / duration);
 		if (mesh.material.color == target) {
-			state = next;
-			Debug.Log(state);
+			state++;
 		}
 	}
 }

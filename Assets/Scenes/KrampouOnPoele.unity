@@ -576,6 +576,71 @@ PrefabInstance:
       propertyPath: force
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 4517090857691490058, guid: fb7084ab2763550278a780ff2fc930dd,
+        type: 3}
+      propertyPath: duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517090857691490058, guid: fb7084ab2763550278a780ff2fc930dd,
+        type: 3}
+      propertyPath: colorEnd.b
+      value: 0.02559852
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517090857691490058, guid: fb7084ab2763550278a780ff2fc930dd,
+        type: 3}
+      propertyPath: colorEnd.g
+      value: 0.11843245
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517090857691490058, guid: fb7084ab2763550278a780ff2fc930dd,
+        type: 3}
+      propertyPath: colorEnd.r
+      value: 0.18396229
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517090857691490058, guid: fb7084ab2763550278a780ff2fc930dd,
+        type: 3}
+      propertyPath: colorStart.b
+      value: 0.7264151
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517090857691490058, guid: fb7084ab2763550278a780ff2fc930dd,
+        type: 3}
+      propertyPath: colorStart.g
+      value: 0.87985426
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517090857691490058, guid: fb7084ab2763550278a780ff2fc930dd,
+        type: 3}
+      propertyPath: colorStart.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517090857691490058, guid: fb7084ab2763550278a780ff2fc930dd,
+        type: 3}
+      propertyPath: colorCooked.b
+      value: 0.21877225
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517090857691490058, guid: fb7084ab2763550278a780ff2fc930dd,
+        type: 3}
+      propertyPath: colorCooked.g
+      value: 0.6436936
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517090857691490058, guid: fb7084ab2763550278a780ff2fc930dd,
+        type: 3}
+      propertyPath: colorCooked.r
+      value: 0.9764151
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517090857691490058, guid: fb7084ab2763550278a780ff2fc930dd,
+        type: 3}
+      propertyPath: colorTooCooked.b
+      value: 0.14124243
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517090857691490058, guid: fb7084ab2763550278a780ff2fc930dd,
+        type: 3}
+      propertyPath: colorTooCooked.g
+      value: 0.42710647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4517090857691490058, guid: fb7084ab2763550278a780ff2fc930dd,
+        type: 3}
+      propertyPath: colorTooCooked.r
+      value: 0.6509434
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
