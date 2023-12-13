@@ -22,6 +22,7 @@ public class Krampou : MonoBehaviour
 	private MeshRenderer mesh;
 
 	private State state;
+    public State State { get => state; }
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +63,8 @@ public class Krampou : MonoBehaviour
 	}
 
 	private void UpdateProgress(Color start, Color target) {
-		mesh.material.color = Color.Lerp(start, target, Time.time / duration);
+		/* FIXME: color flicker when changing states */
+		mesh.material.color = Color.Lerp(start, target, Time.time / (duration * ((int)State + 1)));
 		if (mesh.material.color == target) {
 			state++;
 		}
