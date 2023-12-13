@@ -22,7 +22,7 @@ public class PanMovement : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    { 
+    {
         Vector3 rotation = Input.gyro.attitude.eulerAngles;
 
         // magic stuff
@@ -41,7 +41,15 @@ public class PanMovement : MonoBehaviour
 
         vector.z = vector.y;
         vector.y = tempZ;
-        
+
         return vector;
     }
+
+	private void OnCollisionStay(Collision collision){
+		krampouez = collision.gameObject.GetComponent<Krampou>();
+
+		if (krampouez) {
+			krampouez.Cook();
+		}
+	}
 }
