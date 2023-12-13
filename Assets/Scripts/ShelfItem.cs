@@ -8,7 +8,7 @@ public class ShelfItem : MonoBehaviour, ITouchable
     private Vector3 defaultPosition;
     private MeshRenderer currentMesh;
 
-	public SelectBox box;
+	private SelectBox box;
 
     public void OnTouchedDown(Vector3 touchPosition)
     {
