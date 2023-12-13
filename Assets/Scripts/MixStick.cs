@@ -12,7 +12,7 @@ public class MixStick : MonoBehaviour
 
 	private Vector3 defaultPosition;
 	private float shakePower;
-	private float progress;
+	public float progress;
 
     // Start is called before the first frame update
     void Start()
@@ -42,10 +42,11 @@ public class MixStick : MonoBehaviour
 
 		counter += Time.deltaTime * shakePower * speed;
 
-		float x = Mathf.Cos(counter) * diameter + defaultPosition.x;
-		float y = transform.position.y;
-		float z = Mathf.Sin(counter) * diameter + defaultPosition.z;
+		Vector3 newPosition = transform.position;
 
-		transform.position = new Vector3(x, y, z);
+		newPosition.x = Mathf.Cos(counter) * diameter + defaultPosition.x;
+		newPosition.z = Mathf.Sin(counter) * diameter + defaultPosition.z;
+
+		transform.position = newPosition;
     }
 }
