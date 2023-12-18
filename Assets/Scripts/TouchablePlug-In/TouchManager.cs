@@ -9,6 +9,9 @@ public class TouchManager : MonoBehaviour
     private Camera _mainCamera;
     private Collider _collider;
     private ITouchable _iTouchable;
+
+	public float clipDistance;
+
     void Start()
     {
         _mainCamera = Camera.main;
@@ -38,7 +41,7 @@ public class TouchManager : MonoBehaviour
 
         if (Physics.Raycast(_mainCamera.transform.position, touchePosInWorld - _mainCamera.transform.position, out var info))
         {
-            var touchePosNear = _mainCamera.ScreenToWorldPoint(new Vector3(Input.touches[0].position.x, Input.touches[0].position.y, _mainCamera.nearClipPlane+10));
+            var touchePosNear = _mainCamera.ScreenToWorldPoint(new Vector3(Input.touches[0].position.x, Input.touches[0].position.y, _mainCamera.nearClipPlane+clipDistance));
             if(info.collider != _collider)
             {
                 _collider = info.collider;
