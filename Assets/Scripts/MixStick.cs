@@ -10,6 +10,8 @@ public class MixStick : MonoBehaviour, IMiniGame
 	public float diameter = 1f;
 	public float threshold = 0.5f;
 
+	public MiniGameManager gameManager;
+
 	private Vector3 defaultPosition;
 	private float shakePower;
 	public float progress;

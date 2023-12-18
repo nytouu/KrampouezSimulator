@@ -8,6 +8,8 @@ public class PanMovement : MonoBehaviour, IMiniGame
     public float distanceThreshold = 2.5f;
     public Krampou krampouez;
 
+	public MiniGameManager gameManager;
+
     private Rigidbody rb;
 
 	private bool playing;

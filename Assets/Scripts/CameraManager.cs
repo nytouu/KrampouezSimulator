@@ -3,21 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public enum CameraType {
-	Client,
-	Left,
-	Shelf,
-	Krampou,
-}
-
 public class CameraManager : MonoBehaviour
 {
 	public CinemachineVirtualCamera leftCamera, clientCamera, shelfCamera, krampouCamera;
 
-	[SerializeField] private CameraType currentCamera;
-	public CameraType CurrentCamera { get => currentCamera; }
+	[SerializeField] private GameState currentCamera;
+	public GameState CurrentCamera { get => currentCamera; }
 
-	[SerializeField] private CameraType defaultCamera;
+	[SerializeField] private GameState defaultCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -31,19 +24,19 @@ public class CameraManager : MonoBehaviour
 
     }
 
-	public void ChangeCamera(CameraType type){
+	public void ChangeCamera(GameState type){
 		switch (type) {
-			case CameraType.Client:
-				Select(CameraType.Client, clientCamera);
+			case GameState.Dialog:
+				Select(GameState.Dialog, clientCamera);
 				break;
-			case CameraType.Left:
-				Select(CameraType.Left, leftCamera);
+			case GameState.Mixing:
+				Select(GameState.Mixing, leftCamera);
 				break;
-			case CameraType.Shelf:
-				Select(CameraType.Shelf, shelfCamera);
+			case GameState.Shelf:
+				Select(GameState.Shelf, shelfCamera);
 				break;
-			case CameraType.Krampou:
-				Select(CameraType.Krampou, krampouCamera);
+			case GameState.Krampou:
+				Select(GameState.Krampou, krampouCamera);
 				break;
 		}
 	}
@@ -54,7 +47,7 @@ public class CameraManager : MonoBehaviour
 		shelfCamera.Priority = 10;
 	}
 
-	private void Select(CameraType newCamera, CinemachineVirtualCamera v) {
+	private void Select(GameState newCamera, CinemachineVirtualCamera v) {
 		ResetAllCameras();
 		currentCamera = newCamera;
 		v.Priority = 15;

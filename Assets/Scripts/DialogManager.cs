@@ -10,10 +10,14 @@ public class DialogManager : MonoBehaviour, IMiniGame
 	public Button button;
 	public Image buttonImage;
 
+	public MiniGameManager gameManager;
+
+	private int clickCount;
+
     // Start is called before the first frame update
     void Start()
     {
-		Disable();
+		Enable();
     }
 
     // Update is called once per frame
@@ -23,16 +27,27 @@ public class DialogManager : MonoBehaviour, IMiniGame
     }
 
 	public void OnClick(){
-		textBox.text = "boujour";
+		clickCount++;
+		switch (clickCount) {
+			case 1:
+				textBox.text = "Bien sûr";
+				break;
+			case 2:
+				gameManager.NextGame();
+				break;
+			default:
+				return;
+		}
 	}
 
-    public void Enable() { 
+    public void Enable() {
 		textBox.enabled = true;
 		button.enabled = true;
 		buttonImage.enabled = true;
+		clickCount = 0;
 	}
 
-    public void Disable() { 
+    public void Disable() {
 		textBox.enabled = false;
 		button.enabled = false;
 		buttonImage.enabled = false;

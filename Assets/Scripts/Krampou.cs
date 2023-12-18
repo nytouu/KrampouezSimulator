@@ -58,6 +58,7 @@ public class Krampou : MonoBehaviour
 				UpdateProgress(colorTooCooked, colorCramed);
 				break;
 			case KrampouState.Cramed:
+				pan.gameManager.NextGame();
 				break;
 		}
 	}

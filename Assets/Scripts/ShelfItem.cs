@@ -10,7 +10,7 @@ public class ShelfItem : MonoBehaviour, ITouchable, IMiniGame
 
 	public SelectBox box;
 
-	private bool playing;
+	public bool playing;
 
     public void OnTouchedDown(Vector3 touchPosition)
     {
