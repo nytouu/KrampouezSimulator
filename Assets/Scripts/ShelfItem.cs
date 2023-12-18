@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShelfItem : MonoBehaviour, ITouchable, IMiniGame
+public class ShelfItem : MonoBehaviour, IMiniGame, ITouchable
 {
     private bool selected;
     private Vector3 defaultPosition;
@@ -65,6 +65,6 @@ public class ShelfItem : MonoBehaviour, ITouchable, IMiniGame
 		}
 	}
 
-    public void Enable(){ playing = true; }
+    public void Enable(){ playing = true; selected = false; }
     public void Disable(){ playing = false; }
 }

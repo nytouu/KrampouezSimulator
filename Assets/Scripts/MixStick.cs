@@ -15,6 +15,7 @@ public class MixStick : MonoBehaviour, IMiniGame
 	private Vector3 defaultPosition;
 	private float shakePower;
 	public float progress;
+	public float mixingLimit;
 
 	private bool playing;
 
@@ -37,6 +38,9 @@ public class MixStick : MonoBehaviour, IMiniGame
     void Update()
     {
 		if (playing) {
+			if (progress >= mixingLimit) {
+				gameManager.NextGame();
+			}
 			Vector3 acceleration = Input.gyro.userAcceleration;
 
 			if (acceleration.x > threshold || acceleration.y > threshold || acceleration.z > threshold){
