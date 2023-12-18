@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShelfItem : MonoBehaviour, ITouchable
+public class ShelfItem : MonoBehaviour, ITouchable, IMiniGame
 {
     private bool selected;
     private Vector3 defaultPosition;
@@ -10,23 +10,25 @@ public class ShelfItem : MonoBehaviour, ITouchable
 
 	public SelectBox box;
 
+	private bool playing;
+
     public void OnTouchedDown(Vector3 touchPosition)
     {
-        if (!selected) {
+        if (!selected && playing) {
             currentMesh.material.color = Color.red;
         }
     }
 
     public void OnTouchedStay(Vector3 touchPosition)
     {
-        if (!selected) {
+        if (!selected && playing) {
             transform.position = touchPosition;
         }
     }
 
     public void OnTouchedUp()
     {
-        if (!selected) {
+        if (!selected && playing) {
             transform.position = defaultPosition;
             currentMesh.material.color = Color.white;
         }
@@ -54,10 +56,15 @@ public class ShelfItem : MonoBehaviour, ITouchable
 	}
 
 	private void OnTriggerEnter(Collider collision){
-		box = collision.gameObject.GetComponent<SelectBox>();
+		if (playing){
+			box = collision.gameObject.GetComponent<SelectBox>();
 
-		if (box) {
-			SelectAndMove(box);
+			if (box) {
+				SelectAndMove(box);
+			}
 		}
 	}
+
+    public void Enable(){ playing = true; }
+    public void Disable(){ playing = false; }
 }
