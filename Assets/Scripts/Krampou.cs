@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum State {
+public enum KrampouState {
 	Uncooked,
 	Cooked,
 	TooCooked,
@@ -21,8 +21,8 @@ public class Krampou : MonoBehaviour
     private Rigidbody rb;
 	private MeshRenderer mesh;
 
-	private State state;
-    public State State { get => state; }
+	private KrampouState state;
+    public KrampouState State { get => state; }
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +30,7 @@ public class Krampou : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 		mesh = GetComponent<MeshRenderer>();
 
-		state = State.Uncooked;
+		state = KrampouState.Uncooked;
 
 		transform.position = new Vector3(pan.transform.position.x, pan.transform.position.y + 20, pan.transform.position.z);
     }
@@ -48,16 +48,16 @@ public class Krampou : MonoBehaviour
 
 	public void Cook(){
 		switch (state) {
-			case State.Uncooked:
+			case KrampouState.Uncooked:
 				UpdateProgress(colorStart, colorCooked);
 				break;
-			case State.Cooked:
+			case KrampouState.Cooked:
 				UpdateProgress(colorCooked, colorTooCooked);
 				break;
-			case State.TooCooked:
+			case KrampouState.TooCooked:
 				UpdateProgress(colorTooCooked, colorCramed);
 				break;
-			case State.Cramed:
+			case KrampouState.Cramed:
 				break;
 		}
 	}

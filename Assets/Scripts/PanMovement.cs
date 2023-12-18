@@ -56,7 +56,7 @@ public class PanMovement : MonoBehaviour, IMiniGame
 			krampouez = collision.gameObject.GetComponent<Krampou>();
 
 			if (krampouez) {
-				if (krampouez.State != State.Cramed){
+				if (krampouez.State != KrampouState.Cramed){
 					krampouez.Cook();
 				}
 			}
