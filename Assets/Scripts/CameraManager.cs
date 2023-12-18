@@ -17,10 +17,12 @@ public class CameraManager : MonoBehaviour
 	[SerializeField] private CameraType currentCamera;
 	public CameraType CurrentCamera { get => currentCamera; }
 
+	[SerializeField] private CameraType defaultCamera;
+
     // Start is called before the first frame update
     void Start()
     {
-		ChangeCamera(CameraType.Client);
+		ChangeCamera(defaultCamera);
     }
 
     // Update is called once per frame
