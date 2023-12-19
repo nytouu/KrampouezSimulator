@@ -198,7 +198,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Le saviez-vous : il pleut en bretagne.'
+  m_text: "Bonjour je veux manger une cr\xEApe"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a6f831ed4d6d329e1863be5681695e7c, type: 2}
   m_sharedMaterial: {fileID: 4189826622569265702, guid: a6f831ed4d6d329e1863be5681695e7c,
