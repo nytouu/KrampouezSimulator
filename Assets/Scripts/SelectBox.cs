@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class SelectBox : MonoBehaviour, IMiniGame
 {
-	private List<GameObject> selectedList;
 	[SerializeField] private List<ShelfItem> shelfItems;
+
+	private List<GameObject> selectedList;
+	public List<GameObject> SelectedList { get => selectedList; }
 
 	public MiniGameManager gameManager;
 
