@@ -139,9 +139,12 @@ PlayerSettings:
   bundleVersion: 1.0.2
   preloadedAssets:
   - {fileID: 0}
-  - {fileID: 6089326253076087350, guid: 843b2c38ec509928091bb355b72f064b, type: 2}
-  - {fileID: 11400000, guid: 6ccc28bd0767b40cabe61f36d3edf681, type: 2}
-  - {fileID: 11400000, guid: df77d25368ad7d1869c1a15be63da77d, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: -7356778337590055269, guid: 969faf9452648d63b867b96f1e6dca57, type: 2}
+  - {fileID: 11400000, guid: 0dfd9d515ed6c5be3a9a2363564e639e, type: 2}
+  - {fileID: 11400000, guid: d82feefabc1553092b69c5a85d39b576, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -163,6 +166,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.KrampouInc.KrampouezSimulator
+    Standalone: com.KrampouInc.KrampouezSimulator
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -287,7 +291,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: dffef66376be4fa480fb02b19edbe903, type: 3}
+      m_Icon: {fileID: 2800000, guid: b3c7e46b51dc7a08d90580e52702ce45, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
