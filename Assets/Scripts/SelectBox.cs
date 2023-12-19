@@ -25,7 +25,6 @@ public class SelectBox : MonoBehaviour, IMiniGame
 
 	public void AddIngredientToList(GameObject ingredient) {
 		selectedList.Add(ingredient);
-		Debug.Log(selectedList.Count);
 
 		if (selectedList.Count == 3){
 			gameManager.NextGame();
