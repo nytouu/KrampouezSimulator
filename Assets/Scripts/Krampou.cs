@@ -64,8 +64,7 @@ public class Krampou : MonoBehaviour
 	}
 
 	private void UpdateProgress(Color start, Color target) {
-		/* FIXME: color flicker when changing states */
-		mesh.material.color = Color.Lerp(start, target, Time.time / (duration * ((int)State + 1)));
+		mesh.material.color = Color.Lerp(start, target, (Time.time - pan.StartTime) / (duration * ((int)State + 1)));
 		if (mesh.material.color == target) {
 			state++;
 		}

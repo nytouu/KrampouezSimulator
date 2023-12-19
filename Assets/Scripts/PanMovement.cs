@@ -14,9 +14,13 @@ public class PanMovement : MonoBehaviour, IMiniGame
 
 	private bool playing;
 
+	private float startTime;
+    public float StartTime { get => startTime; }
+
     // Start is called before the first frame update
     void Start()
     {
+		startTime = 0;
 		playing = false;
 
         rb = GetComponent<Rigidbody>();
@@ -65,6 +69,9 @@ public class PanMovement : MonoBehaviour, IMiniGame
 		}
 	}
 
-    public void Enable(){ playing = true; }
+    public void Enable(){ 
+		startTime = Time.time;
+		playing = true; 
+	}
     public void Disable(){ playing = false; }
 }
