@@ -9,41 +9,49 @@ public class Filling : MonoBehaviour, ITouchable, IMiniGame
 
 	private bool playing;
 	private bool selected;
+	private MeshRenderer mesh;
 
 	public Ingredient type;
 	public GameObject popup;
 	public Sprite sprite;
 
-	private GameObject popupInstance;
+	public Fillings fillings;
+
+	/* private GameObject popupInstance; */
 
 	public Vector3 offset;
 
     public void OnTouchedDown(Vector3 touchPosition)
     {
         if (!selected && playing) {
-			popupInstance = Instantiate(popup);
-			SpriteRenderer spriteRenderer = popupInstance.gameObject.GetComponent<SpriteRenderer>();
-			spriteRenderer.sprite = sprite;
+            mesh.material.color = Color.green;
+			selected = true;
+
+			fillings.Append(gameObject);
+			/* popupInstance = Instantiate(popup); */
+			/* SpriteRenderer spriteRenderer = popupInstance.gameObject.GetComponent<SpriteRenderer>(); */
+			/* spriteRenderer.sprite = sprite; */
         }
     }
 
     public void OnTouchedStay(Vector3 touchPosition)
     {
         if (!selected && playing) {
-            popupInstance.transform.position = touchPosition + offset;
+            /* popupInstance.transform.position = touchPosition + offset; */
         }
     }
 
     public void OnTouchedUp()
     {
         if (!selected && playing) {
-			Destroy(popupInstance);
+			/* Destroy(popupInstance); */
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        mesh = GetComponent<MeshRenderer>();
 		selected = false;
     }
 

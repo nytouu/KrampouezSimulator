@@ -16,6 +16,9 @@ public class Fillings : MonoBehaviour, IMiniGame
 {
 	[SerializeField] private List<Filling> fillings;
 
+	[SerializeField] private List<GameObject> selected;
+	public List<GameObject> Selected { get => selected; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,4 +44,8 @@ public class Fillings : MonoBehaviour, IMiniGame
 			item.Enable();
 		}
     }
+
+	public void Append(GameObject item){
+		selected.Add(item);
+	}
 }
