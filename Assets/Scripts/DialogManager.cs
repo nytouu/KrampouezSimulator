@@ -55,7 +55,7 @@ public class DialogManager : MonoBehaviour, IMiniGame
     {
 		switch (clickCount) {
 			case 1:
-				if (gameManager.Score >= 5){
+				if (gameManager.Score >= 7){
 					textBox.text = "La crêpe est parfaite ! Merci !";
 				} else {
 					textBox.text = "ahem...";
@@ -124,7 +124,7 @@ public class DialogManager : MonoBehaviour, IMiniGame
 				textBox.text = "On va faire comme si j’étais un client, d’accord ?";
 				break;
 			case 4:
-				textBox.text = "“Bonjour, je voudrais une crêpe au caramel, s’il vous plaît.”";
+				textBox.text = "“Bonjour, je voudrais une crêpe à la banane, s’il vous plaît.”";
 				break;
 			case 5:
 				textBox.text = "Maintenant, passe en cuisine.";

@@ -100,6 +100,8 @@ public class MiniGameManager : MonoBehaviour
 
 			case GameState.Serving: 
 				dialogGame.Enable();
+				selectedFillings = fillingsGame.SelectedList;
+				score += CheckForFillings(selectedFillings);
 				break;
 		}
 	}
@@ -111,7 +113,7 @@ public class MiniGameManager : MonoBehaviour
 					|| ingredient.name == "Eggs"
 					|| ingredient.name == "Sugar"
 					|| ingredient.name == "Milk"){
-				total += 2;
+				total += 3;
 			}
 		}
 
@@ -131,6 +133,17 @@ public class MiniGameManager : MonoBehaviour
 			default:
 				return 0;
 		}
+	}
+
+	private int CheckForFillings(List<GameObject> fillings){
+		int total = 0;
+		foreach (GameObject filling in fillings){
+			if (filling.name == "Banana"){
+				total += 5;
+			}
+		}
+
+		return total;
 	}
 
 	public void OnClick(){
