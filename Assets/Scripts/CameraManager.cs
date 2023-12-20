@@ -39,6 +39,9 @@ public class CameraManager : MonoBehaviour
 			case GameState.Fillings:
 				Select(fillingsCamera);
 				break;
+			case GameState.Serving:
+				Select(clientCamera);
+				break;
 		}
 	}
 

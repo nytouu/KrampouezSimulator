@@ -70,6 +70,20 @@ public class PanMovement : MonoBehaviour, IMiniGame
 		}
 	}
 
+	private void OnCollisionExit(Collision collision){
+		if (playing){
+			krampouez = collision.gameObject.GetComponent<Krampou>();
+
+			if (krampouez) {
+				particles.Stop();
+			}
+		}
+	}
+
+	public KrampouState GetKrampouState(){
+		return krampouez.State;
+	}
+
     public void Enable(){ 
 		startTime = Time.time;
 		playing = true; 

@@ -20,15 +20,11 @@ public class SelectBox : MonoBehaviour, IMiniGame
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 	public void AddIngredientToList(GameObject ingredient) {
 		selectedList.Add(ingredient);
-
-		if (selectedList.Count == 3){
-			gameManager.NextGame();
-		}
 	}
 
     public void Disable() {
