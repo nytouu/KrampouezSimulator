@@ -5,10 +5,8 @@ using Cinemachine;
 
 public class CameraManager : MonoBehaviour
 {
-	public CinemachineVirtualCamera leftCamera, clientCamera, shelfCamera, krampouCamera;
-
-	[SerializeField] private GameState currentCamera;
-	public GameState CurrentCamera { get => currentCamera; }
+	public CinemachineVirtualCamera leftCamera, clientCamera, shelfCamera, 
+		   krampouCamera, fillingsCamera;
 
 	[SerializeField] private GameState defaultCamera;
 
@@ -27,16 +25,19 @@ public class CameraManager : MonoBehaviour
 	public void ChangeCamera(GameState type){
 		switch (type) {
 			case GameState.Dialog:
-				Select(GameState.Dialog, clientCamera);
+				Select(clientCamera);
 				break;
 			case GameState.Mixing:
-				Select(GameState.Mixing, leftCamera);
+				Select(leftCamera);
 				break;
 			case GameState.Shelf:
-				Select(GameState.Shelf, shelfCamera);
+				Select(shelfCamera);
 				break;
 			case GameState.Krampou:
-				Select(GameState.Krampou, krampouCamera);
+				Select(krampouCamera);
+				break;
+			case GameState.Fillings:
+				Select(fillingsCamera);
 				break;
 		}
 	}
@@ -47,9 +48,8 @@ public class CameraManager : MonoBehaviour
 		shelfCamera.Priority = 10;
 	}
 
-	private void Select(GameState newCamera, CinemachineVirtualCamera v) {
+	private void Select(CinemachineVirtualCamera v) {
 		ResetAllCameras();
-		currentCamera = newCamera;
 		v.Priority = 15;
 	}
 }

@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class ShelfItem : MonoBehaviour, IMiniGame, ITouchable
 {
+	public float clipDistance;
+	public TouchManager touchManager;
+
     private bool selected;
     private Vector3 defaultPosition;
     private MeshRenderer currentMesh;
 
 	public SelectBox box;
 
-	public bool playing;
+	private bool playing;
 
     public void OnTouchedDown(Vector3 touchPosition)
     {
@@ -51,6 +54,7 @@ public class ShelfItem : MonoBehaviour, IMiniGame, ITouchable
 
 	public void SelectAndMove(SelectBox box) {
 		selected = true;
+		currentMesh.material.color = Color.green;
 		transform.position = box.transform.position;
 		box.AddIngredientToList(gameObject);
 	}
@@ -65,6 +69,10 @@ public class ShelfItem : MonoBehaviour, IMiniGame, ITouchable
 		}
 	}
 
-    public void Enable(){ playing = true; selected = false; }
+    public void Enable(){
+		playing = true;
+		selected = false;
+		touchManager.clipDistance = clipDistance;
+	}
     public void Disable(){ playing = false; }
 }

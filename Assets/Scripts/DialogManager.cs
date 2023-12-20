@@ -18,25 +18,48 @@ public class DialogManager : MonoBehaviour, IMiniGame
     void Start()
     {
 		Enable();
+		textBox.text = "Bonjour et bienvenue dans ma crêperie !";
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
 	public void OnClick(){
-		clickCount++;
-		switch (clickCount) {
-			case 1:
-				textBox.text = "Bien sûr";
-				break;
-			case 2:
-				gameManager.NextGame();
-				break;
-			default:
-				return;
+		if (gameManager.CurrentGame == GameState.Dialog){
+			clickCount++;
+			switch (clickCount) {
+				case 1:
+					textBox.text = "Tu vas m’aider à préparer les commandes des clients cette semaine.";
+					break;
+				case 2:
+					textBox.text = "Aujourd’hui, je vais t’apprendre à préparer les crêpes de froment.";
+					break;
+				case 3:
+					textBox.text = "On va faire comme si j’étais un client, d’accord ?";
+					break;
+				case 4:
+					textBox.text = "“Bonjour, je voudrais une crêpe de froment au caramel, s’il vous plaît.”";
+					break;
+				case 5:
+					textBox.text = "Maintenant, passe en cuisine.";
+					break;
+				default:
+					gameManager.NextGame();
+					return;
+			}
+		}
+		if (gameManager.CurrentGame == GameState.Shelf){
+			clickCount++;
+			switch (clickCount) {
+				case 1:
+					textBox.text = "Tu dois choisir les ingrédients pour composer une pâte adaptée à celle que le client t’a demandé.";
+					break;
+				case 2:
+					textBox.text = "";
+					break;
+			}
 		}
 	}
 

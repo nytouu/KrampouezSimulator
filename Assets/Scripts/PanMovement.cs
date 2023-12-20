@@ -7,6 +7,7 @@ public class PanMovement : MonoBehaviour, IMiniGame
     public float forceThreshold = 3f;
     public float distanceThreshold = 2.5f;
     public Krampou krampouez;
+	public ParticleSystem particles;
 
 	public MiniGameManager gameManager;
 
@@ -20,6 +21,7 @@ public class PanMovement : MonoBehaviour, IMiniGame
     // Start is called before the first frame update
     void Start()
     {
+		particles.Stop();
 		startTime = 0;
 		playing = false;
 
@@ -62,9 +64,8 @@ public class PanMovement : MonoBehaviour, IMiniGame
 			krampouez = collision.gameObject.GetComponent<Krampou>();
 
 			if (krampouez) {
-				if (krampouez.State != KrampouState.Cramed){
-					krampouez.Cook();
-				}
+				krampouez.Cook();
+				particles.Play();
 			}
 		}
 	}

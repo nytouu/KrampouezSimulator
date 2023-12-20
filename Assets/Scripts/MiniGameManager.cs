@@ -7,6 +7,7 @@ public enum GameState {
 	Shelf,
 	Mixing,
 	Krampou,
+	Fillings,
 	Serving,
 }
 
@@ -16,17 +17,21 @@ public class MiniGameManager : MonoBehaviour
 	[SerializeField] private SelectBox shelfGame;
 	[SerializeField] private DialogManager dialogGame;
 	[SerializeField] private MixStick mixingGame;
+	[SerializeField] private Fillings fillingsGame;
 
 	[SerializeField] private CameraManager cameraManager;
 
 	[SerializeField] private GameState currentGame;
 	public GameState CurrentGame { get => currentGame; }
 
+	private IMiniGame currentInstance;
+
 	private List<GameObject> selectedIngredients;
 
     // Start is called before the first frame update
     void Start()
     {
+		currentInstance =  dialogGame;
 		/* SwitchGame(GameState.Dialog, dialogGame); */
     }
 
@@ -36,27 +41,32 @@ public class MiniGameManager : MonoBehaviour
         
     }
 
-	private void SwitchGame<T,U>(T newInstance, U oldInstance) where T : IMiniGame where  U: IMiniGame {
+	private IMiniGame SwitchGame<T>(T newInstance) where T : IMiniGame {
 		currentGame++;
-		oldInstance.Disable();
+		currentInstance.Disable();
 		cameraManager.ChangeCamera(currentGame);
 		newInstance.Enable();
+
+		return newInstance;
 	}
 
 	public void NextGame(){
 		switch (currentGame) {
 			case GameState.Dialog: 
-				SwitchGame(shelfGame, dialogGame);
+				currentInstance = SwitchGame(shelfGame);
 				break;
 			case GameState.Shelf: 
 				selectedIngredients = shelfGame.SelectedList;
-				SwitchGame(mixingGame, shelfGame);
+				currentInstance = SwitchGame(mixingGame);
 				break;
 			case GameState.Mixing: 
-				SwitchGame(krampouGame, mixingGame);
+				currentInstance = SwitchGame(krampouGame);
 				break;
 			case GameState.Krampou: 
-				SwitchGame(dialogGame, krampouGame);
+				currentInstance = SwitchGame(fillingsGame);
+				break;
+			case GameState.Fillings: 
+				currentInstance = SwitchGame(dialogGame);
 				break;
 			case GameState.Serving: 
 				break;
